@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <title>Agenda</title>
+  {% include 'parciais/_head.html' %}
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index' %}">Agenda</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <form method="get" action="{% url 'busca' %}">
+        <div class="form-group row">
+          <div class="col-md-12">
+            <form method="get" action="{% url 'busca' %}">
+              <input type="text"
+                     id="search-input"
+                     placeholder="Digite sua pesquisa aqui"
+                     name="termo"
+                     value="{{ request.GET.termo }}"
+              >
+            </form>
+          </div>
+        </div>
+      </form>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        {% block conteudo %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'static/vendor/jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'static/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
